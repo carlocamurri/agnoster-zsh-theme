@@ -39,6 +39,7 @@ CROSS="\u2718"
 LIGHTNING="\u26a1"
 GEAR="\u2699"
 SNAKE="\xF0\x9F\x90\x8D"
+HEXAGON="\u2B22"
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
@@ -132,6 +133,15 @@ prompt_virtualenv() {
   fi
 }
 
+# Display Node.js version if current folder is a Node.js project
+prompt_node() {
+  if [[ -f "package.json" ]]; then
+    color=green
+    prompt_segment $color $PRIMARY_FG
+    print -Pn " $HEXAGON Node.js $(node -v) "
+  fi
+}
+
 ## Main prompt
 prompt_agnoster_main() {
   RETVAL=$?
@@ -139,6 +149,7 @@ prompt_agnoster_main() {
   prompt_status
   prompt_context
   prompt_virtualenv
+  prompt_node
   prompt_dir
   prompt_git
   prompt_end
