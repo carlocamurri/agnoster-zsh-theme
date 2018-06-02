@@ -38,6 +38,7 @@ DETACHED="\u27a6"
 CROSS="\u2718"
 LIGHTNING="\u26a1"
 GEAR="\u2699"
+SNAKE="\xF0\x9F\x90\x8D"
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
@@ -127,7 +128,7 @@ prompt_virtualenv() {
   if [[ -n $VIRTUAL_ENV ]]; then
     color=cyan
     prompt_segment $color $PRIMARY_FG
-    print -Pn " $(basename $VIRTUAL_ENV) "
+    print -Pn " $SNAKE  $(basename $VIRTUAL_ENV) "
   fi
 }
 
